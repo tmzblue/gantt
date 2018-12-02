@@ -80,6 +80,9 @@ export default class Gantt {
             bar_corner_radius: 3,
             arrow_curve: 5,
             padding: 18,
+            resizing: false,
+            draggable: false,
+            progress: false,
             view_mode: 'Day',
             date_format: 'YYYY-MM-DD',
             popup_trigger: 'click',
@@ -715,7 +718,7 @@ export default class Gantt {
                             width: $bar.owidth + $bar.finaldx
                         });
                     }
-                } else if (is_dragging) {
+                } else if (is_dragging && this.options.draggable) {
                     bar.update_bar_position({ x: $bar.ox + $bar.finaldx });
                 }
             });

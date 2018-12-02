@@ -158,6 +158,7 @@ export default class Bar {
     }
 
     get_progress_polygon_points() {
+        if(!this.gantt.options.progress) return;
         const bar_progress = this.$bar_progress;
         return [
             bar_progress.getEndX() - 5,
@@ -211,6 +212,7 @@ export default class Bar {
     }
 
     update_bar_position({ x = null, width = null }) {
+        if(!this.gantt.options.draggable) return;
         const bar = this.$bar;
         if (x) {
             // get all x values of parent task
@@ -359,6 +361,7 @@ export default class Bar {
     }
 
     update_progressbar_position() {
+        if(!this.gantt.options.progress) return;
         this.$bar_progress.setAttribute('x', this.$bar.getX());
         this.$bar_progress.setAttribute(
             'width',
@@ -380,6 +383,7 @@ export default class Bar {
     }
 
     update_handle_position() {
+        if(!this.gantt.options.resizing) return;
         const bar = this.$bar;
         this.handle_group
             .querySelector('.handle.left')
